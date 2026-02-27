@@ -9,19 +9,22 @@ type Consulta = {
   status: "agendada" | "confirmada" | "cancelada" | "realizada";
 };
 export default function App() {
+
   const [consulta, setConsulta] = useState<Consulta>({
     id: 1,
-    paciente: "Carlos Andrade",
-    medico: "Dr. Roberto Silva",
+    paciente: "Jonas Santos",
+    medico: "Dr. Hete Caetano",
     data: "28/02/2026",
     status: "agendada",
   });
+
   function confirmarConsulta() {
     setConsulta({
       ...consulta,
       status: "confirmada",
     });
   }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Sistema de Consultas</Text>
@@ -31,7 +34,11 @@ export default function App() {
         <Text>Data: {consulta.data}</Text>
         <Text>Status: {consulta.status}</Text>
         {consulta.status === "agendada" && (
-          <Button title="Confirmar Consulta" onPress={confirmarConsulta} />
+
+          <View style={styles.botao}>
+            <Button title="Confirmar Consulta" onPress={confirmarConsulta} /> 
+          </View>
+          //Componentes proprios precisam estar dentro de um view para conseguir atribuir style
         )}
       </View>
     </View>
@@ -57,5 +64,8 @@ const styles = StyleSheet.create({
     padding: 20,
     borderWidth: 1,
     borderRadius: 8,
+  },
+  botao: {
+    marginTop: 20,
   },
 });
